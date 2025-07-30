@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Mfg application dashboard</title>
+   <script defer src="dash.js"></script>
+    <link rel="stylesheet" href="dash.css">
+</head>
+<body>
+    <!-- Hamburger Menu Button -->
+    <button class="hamburger-menu" id="hamburgerBtn">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
+
+    <!-- Sidebar Overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="dashboard-container" id="dashboardContainer">
+        <div class="dashboard-left">
+            <div class="dashboard-left-header">
+        <div class="dashboard-left-title">
+                   Applications
+        </div>
+        <div class="dashboard-left-subtitle">
+            Systèmes principaux
+        </div>
+      
+    </div>
+   <div class="dashboard-left-apps-list">
+    <div class="dashboard-app-btn app-mfg" data-app-id="app-mfg" data-url="https://outlook.office.com/" data-icon="./email.png" data-title="Messagerie MFG" data-desc="Communication interne">
+        <img src="./email.png" >
+        <span>
+            <div class="dashboard-app-title">Messagerie MFG</div>
+            <div class="dashboard-app-desc">Communication interne</div>
+        </span>
+        <button class="favorite-btn" onclick="toggleFavorite(event, 'app-mfg')">
+            <span class="star-icon">☆</span>
+        </button>
+    </div>
+    <div class="dashboard-app-btn app-glasap-test" data-app-id="app-glasap-test" data-url="https://cevsap0203.cevcorp.pri:44311/sap/bc/ui2/flp#Shell-home" data-icon="./settings.png" data-title="GlasAP (Test)" data-desc="Environnement de test">
+        <img src="./settings.png" >
+        <span>
+            <div class="dashboard-app-title">GlasAP (Test)</div>
+            <div class="dashboard-app-desc">Environnement de test</div>
+        </span>
+        <button class="favorite-btn" onclick="toggleFavorite(event, 'app-glasap-test')">
+            <span class="star-icon">☆</span>
+        </button>
+    </div>
+    <div class="dashboard-app-btn app-glasap" data-app-id="app-glasap" data-url="https://crpasp020102.cevcorp.pri:44310/sap/bc/ui2/flp#Shell-home" data-icon="./sap.png" data-title="GlasAP" data-desc="Système principal">
+        <img src="./sap.png ">
+        <span>
+            <div class="dashboard-app-title">GlasAP</div>
+            <div class="dashboard-app-desc">Système principal</div>
+        </span>
+        <button class="favorite-btn" onclick="toggleFavorite(event, 'app-glasap')">
+            <span class="star-icon">☆</span>
+        </button>
+    </div>
+    <div class="dashboard-app-btn app-gmao-test" data-app-id="app-gmao-test" data-url="http://cosform/coswin" data-icon="./maintenance.png" data-title="GMAO FOR/Test" data-desc="Maintenance (Test)">
+        <img src="./maintenance.png" >
+        <span>
+            <div class="dashboard-app-title">GMAO FOR/Test</div>
+            <div class="dashboard-app-desc">Maintenance (Test)</div>
+        </span>
+        <button class="favorite-btn" onclick="toggleFavorite(event, 'app-gmao-test')">
+            <span class="star-icon">☆</span>
+        </button>
+    </div>
+    <div class="dashboard-app-btn app-gmao-prod" data-app-id="app-gmao-prod" data-url="http://cosprod/coswin" data-icon="./setting.png" data-title="GMAO prod" data-desc="Maintenance production">
+        <img src="./setting.png" >
+        <span>
+            <div class="dashboard-app-title">GMAO prod</div>
+            <div class="dashboard-app-desc">Maintenance production</div>
+        </span>
+        <button class="favorite-btn" onclick="toggleFavorite(event, 'app-gmao-prod')">
+            <span class="star-icon">☆</span>
+        </button>
+    </div>
+    <div class="dashboard-app-btn app-itsm" data-app-id="app-itsm" data-url="https://support.cevital.com/" data-icon="./ticket.png" data-title="ITSM" data-desc="Support technique">
+        <img src="./ticket.png" >
+        <span>
+            <div class="dashboard-app-title">ITSM</div>
+            <div class="dashboard-app-desc">Support technique</div>
+        </span>
+        <button class="favorite-btn" onclick="toggleFavorite(event, 'app-itsm')">
+            <span class="star-icon">☆</span>
+        </button>
+    </div>
+    <div class="dashboard-app-btn app-portail-rh" data-app-id="app-portail-rh" data-url="https://portail.cevital.com/direction/hr/SitePages/Accueil.aspx" data-icon="./people.png" data-title="Portail RH" data-desc="Ressources humaines">
+        <img src="./people.png" >
+        <span>
+            <div class="dashboard-app-title">Portail RH</div>
+            <div class="dashboard-app-desc">Ressources humaines<br><span class="dashboard-app-version">Systèmes MFG<br>Version 2.0.1</span></div>
+        </span>
+        <button class="favorite-btn" onclick="toggleFavorite(event, 'app-portail-rh')">
+            <span class="star-icon">☆</span>
+        </button>
+    </div>
+    <div class="dashboard-app-btn app-evaluation" data-app-id="app-evaluation" data-url="application/evalrh/login2.php" data-icon="./schedule.png" data-title="Evaluation annuelle" data-desc="Évaluation du personnel">
+   <img src="./schedule.png" >
+    <span>
+        <div class="dashboard-app-title">Evaluation annuelle</div>
+        <div class="dashboard-app-desc">Évaluation du personnel</div>
+    </span>
+        <button class="favorite-btn" onclick="toggleFavorite(event, 'app-evaluation')">
+            <span class="star-icon">☆</span>
+        </button>
+</div>
+<div class="dashboard-app-btn app-reporting" data-app-id="app-reporting" data-url="application/mfg/login.php" data-icon="./report.png" data-title="Reporting" data-desc="Rapports et analyses">
+    <img src="./report.png" >
+    <span>
+        <div class="dashboard-app-title">Reporting</div>
+        <div class="dashboard-app-desc">Rapports et analyses</div>
+    </span>
+        <button class="favorite-btn" onclick="toggleFavorite(event, 'app-reporting')">
+            <span class="star-icon">☆</span>
+        </button>
+</div>
+<div class="dashboard-app-btn app-immobilisations" data-app-id="app-immobilisations" data-url="application/GPI/login.php" data-icon="./computer.png" data-title="Gestion immobilisations" data-desc="Actifs immobiliers">
+    <img src="./computer.png" >
+    <span>
+        <div class="dashboard-app-title">Gestion immobilisations</div>
+        <div class="dashboard-app-desc">Actifs immobiliers</div>
+    </span>
+        <button class="favorite-btn" onclick="toggleFavorite(event, 'app-immobilisations')">
+            <span class="star-icon">☆</span>
+        </button>
+</div>
+
+  <div class="dashboard-app-btn app-annuaire" data-app-id="app-annuaire" data-url="application/annuaire_telephonique/table_2.php" data-icon="./phone.png" data-title="Annuaire téléphonique" data-desc="Contacts entreprise">
+   <img src="./phone.png" >
+    <span>
+        <div class="dashboard-app-title">Annuaire téléphonique</div>
+        <div class="dashboard-app-desc">Contacts entreprise</div>
+    </span>
+        <button class="favorite-btn" onclick="toggleFavorite(event, 'app-annuaire')">
+            <span class="star-icon">☆</span>
+        </button>
+</div>
+<div class="dashboard-app-btn app-gestion" data-app-id="app-gestion" data-url="application/appro/login.php" data-icon="./money_2.png" data-title="Gestion trésorerie" data-desc="Finances et budget">
+   <img src="./money_2.png" alt="">
+    <span>
+        <div class="dashboard-app-title">Gestion trésorerie</div>
+        <div class="dashboard-app-desc">Finances et budget</div>
+    </span>
+        <button class="favorite-btn" onclick="toggleFavorite(event, 'app-gestion')">
+            <span class="star-icon">☆</span>
+        </button>
+</div>
+<div class="dashboard-app-btn app-employe" data-app-id="app-employe" data-url="application/Rh_mfg/login.php" data-icon="./employee.png" data-title="Employée MFG" data-desc="Profil employé">
+    <img src="./employee.png" >
+    <span>
+        <div class="dashboard-app-title">Employée MFG</div>
+        <div class="dashboard-app-desc">Profil employé</div>
+    </span>
+        <button class="favorite-btn" onclick="toggleFavorite(event, 'app-employe')">
+            <span class="star-icon">☆</span>
+        </button>
+</div>
+<div class="dashboard-app-btn app-fiche" data-app-id="app-fiche" data-url="application/fiche_rh/login.php" data-icon="./file.png" data-title="Fiche signalétique" data-desc="Informations produits">
+    <img src="./file.png" >
+    <span>
+        <div class="dashboard-app-title">Fiche signalétique</div>
+        <div class="dashboard-app-desc">Informations produits</div>
+    </span>
+        <button class="favorite-btn" onclick="toggleFavorite(event, 'app-fiche')">
+            <span class="star-icon">☆</span>
+        </button>
+</div>
+<div class="dashboard-app-btn app-zeiss" data-app-id="app-zeiss" data-url="application/projet_psi/login.php" data-icon="./quality-assurance.png" data-title="ZEISS PSI" data-desc="Contrôle qualité">
+    <img src="./quality-assurance.png" >
+    <span>
+        <div class="dashboard-app-title">ZEISS PSI</div>
+        <div class="dashboard-app-desc">Contrôle qualité</div>
+    </span>
+        <button class="favorite-btn" onclick="toggleFavorite(event, 'app-zeiss')">
+            <span class="star-icon">☆</span>
+        </button>
+</div>
+
+<div class="dashboard-app-btn app-collaborateurs" data-app-id="app-collaborateurs" data-url="application/RH/Index.php" data-icon="./winner.png" data-title="Meilleurs collaborateurs" data-desc="Reconnaissance du personnel">
+   <img src="./winner.png" >
+    <span>
+        <div class="dashboard-app-title">Meilleurs collaborateurs</div>
+        <div class="dashboard-app-desc">Reconnaissance du personnel</div>
+    </span>
+        <button class="favorite-btn" onclick="toggleFavorite(event, 'app-collaborateurs')">
+            <span class="star-icon">☆</span>
+        </button>
+</div>
+    <div class="dashboard-left-footer">
+        <!-- Footer content if needed -->
+    </div>
+        </div>
+
+
+        </div>
+
+        <div class="dashboard-middle">
+        <div class="header-content">
+            <div class="note-hse-box">
+                    <div class="note-hse-header">
+                        <!-- LEFT -->
+                    <div class="header-left">
+                        <img src="./image.png" alt="MFG Logo">
+                    </div>
+
+                        <!-- CENTER -->
+                    <div class="header-center">
+                          <div class="message-label">Message :</div>
+                        <div class="message-text">
+                            <p>Veuillez consulter les nouvelles instructions de sécurité disponibles dans le tableau de bord HSE. La sécurité est l’affaire de tous.</p>
+                        </div>
+                    </div>
+
+                        <!-- RIGHT -->
+                     <div class="header-right">
+                          <img src="./protect.png" alt="HSE Icon">
+                          <div class="note-title">Note HSE</div>
+                     </div>
+                  </div>
+               </div>
+
+         </div>
+
+        <div class="progress-stat">
+             <div class="progress-section">
+                <div class="progress-item">
+                    <div class="progress-label">FC</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar progress-red" data-width="60"></div>
+                    </div>
+                    <div class="progress-percentage">60%</div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">E&U</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar progress-red" data-width="0"></div>
+                    </div>
+                    <div class="progress-percentage">0%</div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">COM</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar progress-green" data-width="70"></div>
+                    </div>
+                    <div class="progress-percentage">70%</div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">A&A</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar progress-blue" data-width="45"></div>
+                    </div>
+                    <div class="progress-percentage">45%</div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">DG</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar progress-red" data-width="60"></div>
+                    </div>
+                    <div class="progress-percentage">60%</div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">TI</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar progress-red" data-width="60"></div>
+                    </div>
+                    <div class="progress-percentage">60%</div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">SI</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar progress-orange" data-width="80"></div>
+                    </div>
+                    <div class="progress-percentage">80%</div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">RH</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar progress-green" data-width="70"></div>
+                    </div>
+                    <div class="progress-percentage">70%</div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">F1</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar progress-blue" data-width="45"></div>
+                    </div>
+                    <div class="progress-percentage">45%</div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">F2</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar progress-red" data-width="60"></div>
+                    </div>
+                    <div class="progress-percentage">60%</div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">QNSE</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar progress-teal" data-width="60"></div>
+                    </div>
+                    <div class="progress-percentage">60%</div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">LOG</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar progress-green" data-width="60"></div>
+                    </div>
+                    <div class="progress-percentage">60%</div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-label">PSI</div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar progress-cyan" data-width="60"></div>
+                    </div>
+                    <div class="progress-percentage">60%</div>
+                </div>
+            </div>
+
+            <div class="dashboard-cards">
+    <div class="dashboard-card">
+        <div class="dashboard-card-label">Record à battre</div>
+        <div class="dashboard-card-value green">100</div>
+        <div class="dashboard-card-icon card-icon-green">
+            <!-- Up arrow SVG -->
+            <svg width="32" height="32" fill="none"><rect width="32" height="32" rx="10" fill="#A7F3D0"/><path d="M10 18l6-6 6 6" stroke="#22C55E" stroke-width="2" fill="none"/></svg>
+        </div>
+    </div>
+    <div class="dashboard-card">
+        <div class="dashboard-card-label">Nombre de jours sans accidents</div>
+        <div class="dashboard-card-value orange">54 <span class="dashboard-card-unit">Jours</span></div>
+        <div class="dashboard-card-icon card-icon-orange">
+            <!-- Calendar SVG -->
+            <svg width="32" height="32" fill="none"><rect width="32" height="32" rx="10" fill="#FDE68A"/><path d="M11 13h10v8H11z" stroke="#EAB308" stroke-width="2"/><rect x="13" y="11" width="6" height="2" rx="1" fill="#EAB308"/></svg>
+        </div>
+    </div>
+     <div class="dashboard-card">
+        <div class="dashboard-card-label">Date du dernier accident avec arrêt</div>
+        <div class="dashboard-card-value red">03-06-2025</div>
+        <div class="dashboard-card-icon card-icon-red">
+            <!-- Alert SVG -->
+            <svg width="32" height="32" fill="none"><rect width="32" height="32" rx="10" fill="#FECACA"/><path d="M16 11v6" stroke="#DC2626" stroke-width="2"/><circle cx="16" cy="21" r="1" fill="#DC2626"/></svg>
+        </div>
+    </div>
+    <div class="dashboard-card">
+        <div class="dashboard-card-label">Nombre d'accidents de l'année</div>
+        <div class="dashboard-card-value blue">6</div>
+        <div class="dashboard-card-icon card-icon-blue">
+            <!-- Shield SVG -->
+            <svg width="32" height="32" fill="none"><rect width="32" height="32" rx="10" fill="#DBEAFE"/><path d="M16 13l5 2v3c0 3.314-2.686 6-6 6s-6-2.686-6-6v-3l5-2h2z" stroke="#2563EB" stroke-width="2"/></svg>
+        </div>
+    </div>
+            </div>
+        </div>
+
+        </div>
+
+         <div class="dashboard-right">
+            <div class="dashboard-right-header">
+            <div class="dashboard-right-title">
+                Favoris
+            </div>
+    <div class="dashboard-right-subtitle">
+        Utilitaires
+    </div>
+    <div class="dashboard-right-apps-list">
+
+</div>
+</div>
+<div class="dashboard-right-footer">
+    <!-- Footer content if needed -->
+</div>
+</div>
+
+
+
+
+        
+    </div>
+</body>
+
+</html>
